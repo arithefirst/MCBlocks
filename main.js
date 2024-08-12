@@ -18,6 +18,7 @@ const geometry = new THREE.BoxGeometry(2, 2, 2);
 // Set the texure locations array depending on which block is being loaded
 let textureLocations;
 if ($("#blocks").val() == "grassblock") {
+  $("#favicon").attr("href", "/public/grassblock/side.png");
   textureLocations = [
     "/public/grassblock/side.png", // Right
     "/public/grassblock/side.png", // Left
@@ -27,6 +28,7 @@ if ($("#blocks").val() == "grassblock") {
     "/public/grassblock/side.png", // Back
   ];
 } else if ($("#blocks").val() == "dirt") {
+  $("#favicon").attr("href", "/public/dirt.png");
   textureLocations = [
     "/public/dirt.png", // Right
     "/public/dirt.png", // Left
@@ -36,6 +38,7 @@ if ($("#blocks").val() == "grassblock") {
     "/public/dirt.png", // Back
   ];
 } else if ($("#blocks").val() == "cobblestone") {
+  $("#favicon").attr("href", "public/cobblestone.png");
   textureLocations = [
     "/public/cobblestone.png", // Right
     "/public/cobblestone.png", // Left
@@ -45,6 +48,7 @@ if ($("#blocks").val() == "grassblock") {
     "/public/cobblestone.png", // Back
   ];
 } else if ($("#blocks").val() == "obsidian") {
+  $("#favicon").attr("href", "/public/obsidian.png");
   textureLocations = [
     "/public/obsidian.png", // Right
     "/public/obsidian.png", // Left
@@ -54,6 +58,7 @@ if ($("#blocks").val() == "grassblock") {
     "/public/obsidian.png", // Back
   ];
 } else if ($("#blocks").val() == "tnt") {
+  $("#favicon").attr("href", "/public/tnt/side.png");
   textureLocations = [
     "/public/tnt/side.png", // Right
     "/public/tnt/side.png", // Left
@@ -63,6 +68,7 @@ if ($("#blocks").val() == "grassblock") {
     "/public/tnt/side.png", // Back
   ];
 } else if ($("#blocks").val() == "bedrock") {
+  $("#favicon").attr("href", "/public/bedrock.png");
   textureLocations = [
     "/public/bedrock.png", // Right
     "/public/bedrock.png", // Left
