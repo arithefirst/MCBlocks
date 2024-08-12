@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="dark" />
+    <title>Minecraft Block Renderer</title>
+    <style>
+      body {
+        margin: 0;
+      }
+    </style>
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <select name="blocks" id="blocks" onchange="location.reload();">
+      <option value="grassblock">Grass Block</option>
+      <option value="dirt">Dirt</option>
+      <option value="cobblestone">Cobblestone</option>
+      <option value="obsidian">Obsidian</option>
+    </select>
+    <select name="controls" id="controls" onchange="location.reload();">
+      <option value="arX">Autorotate X</option>
+      <option value="arY">Autorotate Y</option>
+      <option value="arXY">Autorotate X+Y</option>
+      <option value="mouse">Mouse Controls</option>
+      <option value="arXYmouse">Autorotate X+Y and Mouse Controls</option>
+    </select>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

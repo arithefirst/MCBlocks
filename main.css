@@ -1,0 +1,13 @@
+#blocks {
+  position: fixed;
+  z-index: 1000;
+  margin-left: 10px;
+  margin-top: 40px;
+}
+
+#controls {
+  position: fixed;
+  z-index: 1000;
+  margin-left: 10px;
+  margin-top: 10px;
+}
