@@ -77,6 +77,26 @@ if ($("#blocks").val() == "grassblock") {
     "/public/bedrock.png", // Front
     "/public/bedrock.png", // Back
   ];
+} else if ($("#blocks").val() == "oakplanks") {
+  $("#favicon").attr("href", "/public/oakplanks.png");
+  textureLocations = [
+    "/public/oakplanks.png", // Right
+    "/public/oakplanks.png", // Left
+    "/public/oakplanks.png", // Top
+    "/public/oakplanks.png", // Bottom
+    "/public/oakplanks.png", // Front
+    "/public/oakplanks.png", // Back
+  ];
+} else if ($("#blocks").val() == "craftingtable") {
+  $("#favicon").attr("href", "/public/craftingtable/front.png");
+  textureLocations = [
+    "/public/craftingtable/side.png", // Right
+    "/public/craftingtable/side.png", // Left
+    "/public/craftingtable/top.png", // Top
+    "/public/oakplanks.png", // Bottom
+    "/public/craftingtable/front.png", // Front
+    "/public/craftingtable/side.png", // Back
+  ];
 }
 
 // Create the material out of the image paths in the array
