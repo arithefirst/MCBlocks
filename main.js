@@ -62,6 +62,15 @@ if ($("#blocks").val() == "grassblock") {
     "/public/tnt/side.png", // Front
     "/public/tnt/side.png", // Back
   ];
+} else if ($("#blocks").val() == "bedrock") {
+  textureLocations = [
+    "/public/bedrock.png", // Right
+    "/public/bedrock.png", // Left
+    "/public/bedrock.png", // Top
+    "/public/bedrock.png", // Bottom
+    "/public/bedrock.png", // Front
+    "/public/bedrock.png", // Back
+  ];
 }
 
 // Create the material out of the image paths in the array
