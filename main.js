@@ -6,7 +6,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
-const controls = new OrbitControls(camera, renderer.domElement);
 
 renderer.outputColorSpace = THREE.LinearSRGBColorSpace;
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -83,43 +82,49 @@ scene.add(cube);
 // Back the camera up a bit
 camera.position.z = 5;
 
-// Define the 5 different animloop types for the 5 options
-function mousecontrol() {
-  controls.update;
-  renderer.render(scene, camera);
+// Itterate through the different viewmodes
+// Mouse Control
+if ($("#controls").val() == "mouse") {
+  const controls = new OrbitControls(camera, renderer.domElement);
+  function animloop() {
+    controls.update;
+    renderer.render(scene, camera);
+  }
+  renderer.setAnimationLoop(animloop);
 }
-
-function rotateX() {
-  cube.rotation.x += 0.005;
-  renderer.render(scene, camera);
-}
-
-function rotateY() {
-  cube.rotation.y += 0.005;
-  renderer.render(scene, camera);
-}
-
-function rotateXY() {
-  cube.rotation.x += 0.005;
-  cube.rotation.y += 0.005;
-  renderer.render(scene, camera);
-}
-
-function MouserotateXY() {
-  controls.update;
-  cube.rotation.x += 0.005;
-  cube.rotation.y += 0.005;
-  renderer.render(scene, camera);
-}
-
+// Rotate X
 if ($("#controls").val() == "arX") {
-  renderer.setAnimationLoop(rotateX);
-} else if ($("#controls").val() == "arY") {
-  renderer.setAnimationLoop(rotateY);
-} else if ($("#controls").val() == "arXY") {
-  renderer.setAnimationLoop(rotateXY);
-} else if ($("#controls").val() == "mouse") {
-  renderer.setAnimationLoop(mousecontrol);
-} else if ($("#controls").val() == "arXYmouse") {
-  renderer.setAnimationLoop(MouserotateXY);
+  function animloop() {
+    cube.rotation.x += 0.005;
+    renderer.render(scene, camera);
+  }
+  renderer.setAnimationLoop(animloop);
+}
+// Rotate Y
+if ($("#controls").val() == "arY") {
+  function animloop() {
+    cube.rotation.y += 0.005;
+    renderer.render(scene, camera);
+  }
+  renderer.setAnimationLoop(animloop);
+}
+// Rotate X+Y
+if ($("#controls").val() == "arXY") {
+  function animloop() {
+    cube.rotation.x += 0.005;
+    cube.rotation.y += 0.005;
+    renderer.render(scene, camera);
+  }
+  renderer.setAnimationLoop(animloop);
+}
+// Rotate X+Y and Mouse Control
+if ($("#controls").val() == "arXYmouse") {
+  const controls = new OrbitControls(camera, renderer.domElement);
+  function animloop() {
+    controls.update;
+    cube.rotation.x += 0.005;
+    cube.rotation.y += 0.005;
+    renderer.render(scene, camera);
+  }
+  renderer.setAnimationLoop(animloop);
 }
