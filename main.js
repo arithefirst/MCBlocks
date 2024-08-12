@@ -54,7 +54,17 @@ if ($("#blocks").val() == "grassblock") {
     "/public/obsidian.png", // Front
     "/public/obsidian.png", // Back
   ];
+} else if ($("#blocks").val() == "tnt") {
+  textureLocations = [
+    "/public/tnt/side.png", // Right
+    "/public/tnt/side.png", // Left
+    "/public/tnt/top.png", // Top
+    "/public/tnt/bottom.png", // Bottom
+    "/public/tnt/side.png", // Front
+    "/public/tnt/side.png", // Back
+  ];
 }
+
 // Create the material out of the image paths in the array
 const cubeMats = [
   new THREE.MeshBasicMaterial({ map: textureLoader.load(textureLocations[0]) }), // Right
