@@ -16,88 +16,43 @@ const textureLoader = new THREE.TextureLoader();
 const geometry = new THREE.BoxGeometry(2, 2, 2);
 
 // Set the texure locations array depending on which block is being loaded
-let textureLocations;
-if ($("#blocks").val() == "grassblock") {
-  $("#favicon").attr("href", "/public/grassblock/side.png");
-  textureLocations = [
-    "/public/grassblock/side.png", // Right
-    "/public/grassblock/side.png", // Left
-    "/public/grassblock/top.png", // Top
-    "/public/dirt.png", // Bottom
-    "/public/grassblock/side.png", // Front
-    "/public/grassblock/side.png", // Back
-  ];
-} else if ($("#blocks").val() == "dirt") {
-  $("#favicon").attr("href", "/public/dirt.png");
-  textureLocations = [
-    "/public/dirt.png", // Right
-    "/public/dirt.png", // Left
-    "/public/dirt.png", // Top
-    "/public/dirt.png", // Bottom
-    "/public/dirt.png", // Front
-    "/public/dirt.png", // Back
-  ];
-} else if ($("#blocks").val() == "cobblestone") {
-  $("#favicon").attr("href", "public/cobblestone.png");
-  textureLocations = [
-    "/public/cobblestone.png", // Right
-    "/public/cobblestone.png", // Left
-    "/public/cobblestone.png", // Top
-    "/public/cobblestone.png", // Bottom
-    "/public/cobblestone.png", // Front
-    "/public/cobblestone.png", // Back
-  ];
-} else if ($("#blocks").val() == "obsidian") {
-  $("#favicon").attr("href", "/public/obsidian.png");
-  textureLocations = [
-    "/public/obsidian.png", // Right
-    "/public/obsidian.png", // Left
-    "/public/obsidian.png", // Top
-    "/public/obsidian.png", // Bottom
-    "/public/obsidian.png", // Front
-    "/public/obsidian.png", // Back
-  ];
-} else if ($("#blocks").val() == "tnt") {
-  $("#favicon").attr("href", "/public/tnt/side.png");
-  textureLocations = [
-    "/public/tnt/side.png", // Right
-    "/public/tnt/side.png", // Left
-    "/public/tnt/top.png", // Top
-    "/public/tnt/bottom.png", // Bottom
-    "/public/tnt/side.png", // Front
-    "/public/tnt/side.png", // Back
-  ];
-} else if ($("#blocks").val() == "bedrock") {
-  $("#favicon").attr("href", "/public/bedrock.png");
-  textureLocations = [
-    "/public/bedrock.png", // Right
-    "/public/bedrock.png", // Left
-    "/public/bedrock.png", // Top
-    "/public/bedrock.png", // Bottom
-    "/public/bedrock.png", // Front
-    "/public/bedrock.png", // Back
-  ];
-} else if ($("#blocks").val() == "oakplanks") {
-  $("#favicon").attr("href", "/public/oakplanks.png");
-  textureLocations = [
-    "/public/oakplanks.png", // Right
-    "/public/oakplanks.png", // Left
-    "/public/oakplanks.png", // Top
-    "/public/oakplanks.png", // Bottom
-    "/public/oakplanks.png", // Front
-    "/public/oakplanks.png", // Back
-  ];
-} else if ($("#blocks").val() == "craftingtable") {
-  $("#favicon").attr("href", "/public/craftingtable/front.png");
-  textureLocations = [
-    "/public/craftingtable/side.png", // Right
-    "/public/craftingtable/side.png", // Left
-    "/public/craftingtable/top.png", // Top
-    "/public/oakplanks.png", // Bottom
-    "/public/craftingtable/front.png", // Front
-    "/public/craftingtable/side.png", // Back
-  ];
+let texType;
+var textureLocations = [];
+const repeating = ["dirt", "cobblestone", "obsidian", "bedrock", "oakplanks"];
+const repeatingSides = ["tnt", "grassblock"];
+const repeatngLBR = ["craftingtable"];
+
+if (repeating.includes($("#blocks").val())) {
+  texType = 1;
+} else if (repeatingSides.includes($("#blocks").val())) {
+  texType = 2;
+} else if (repeatngLBR.includes($("#blocks").val())) {
+  texType = 3;
 }
+
+function generateTextures(texType, blockname) {
+  if (texType == 1) {
+    for (let i = 0; i != 6; i++) {
+      textureLocations[i] = `public/${blockname}.png`;
+    }
+  } else if (texType == 2) {
+    textureLocations[0] = `public/${blockname}/side.png`;
+    textureLocations[1] = `public/${blockname}/side.png`;
+    textureLocations[2] = `public/${blockname}/top.png`;
+    textureLocations[3] = `public/${blockname}/bottom.png`;
+    textureLocations[4] = `public/${blockname}/side.png`;
+    textureLocations[5] = `public/${blockname}/side.png`;
+  } else if (texType == 3) {
+    textureLocations[0] = `public/${blockname}/side.png`;
+    textureLocations[1] = `public/${blockname}/side.png`;
+    textureLocations[2] = `public/${blockname}/top.png`;
+    textureLocations[3] = `public/${blockname}/bottom.png`;
+    textureLocations[4] = `public/${blockname}/front.png`;
+    textureLocations[5] = `public/${blockname}/side.png`;
+  }
+}
+
+generateTextures(texType, $("#blocks").val());
 
 // Create the material out of the image paths in the array
 const cubeMats = [
